@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YEG Kardeş · Platform</title>
+<meta name="description" content="YEG Kardeş platformu: Türkiye ve Avrupa'daki Yerel Eylem Gruplarının tanıştığı, kardeş YEG olduğu ve ortak proje kurduğu ağ. Prototip.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#14263F">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/uc3.css">
+<script type="importmap">{ "imports": { "three": "./vendor/three.module.min.js" } }</script>
+<script type="module" src="js/3d/index.js"></script>
+</head>
+<body>
+
+
+<div id="splash">
+  <div class="ic">
+    <svg class="isaret" width="74" height="54" viewBox="0 0 74 54"><circle cx="26" cy="27" r="19" stroke="#E3B341"/><circle cx="48" cy="27" r="19" stroke="#9CC3EE"/></svg>
+    <div class="ad">YEG <em>Kardeş</em></div>
+    <div class="alt">Türkiye ve Avrupa'nın Yerel Eylem Grupları bir arada</div>
+    <div class="bar"><i></i></div>
+  </div>
+</div>
+
+<div class="app">
+  <aside class="side" id="side">
+    <div class="marka">
+      <svg class="isaret" width="34" height="26" viewBox="0 0 74 54"><circle cx="26" cy="27" r="19" stroke="#E3B341"/><circle cx="48" cy="27" r="19" stroke="#9CC3EE"/></svg>
+      <span>YEG <em>Kardeş</em></span>
+    </div>
+    <nav id="nav"></nav>
+    <a class="tanitim-link" href="index.html"><svg class="i" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Tanıtım sayfası</a>
+    <div class="benkart" id="benKart" title="Hangi YEG adına gezdiğinizi değiştirin">
+      <div id="benAv"></div>
+      <div class="k"><b id="benAd"></b><span>Hesabı değiştir ▾</span></div>
+      <select id="benSec" aria-label="Aktif YEG"></select>
+    </div>
+  </aside>
+  <div class="perde" id="perde"></div>
+
+  <main class="icerik">
+    <div class="ust">
+      <div class="ic">
+        <button class="ikon-btn menu-btn" id="menuBtn" aria-label="Menü"></button>
+        <div class="arama" id="aramaAc"><span id="aramaIk"></span><span>YEG, proje veya sayfa ara…</span><kbd>Ctrl K</kbd></div>
+        <div class="sag">
+          <span class="proto-rozet" title="Bu sayfa bir prototiptir. YEG'ler, kişiler, projeler ve mesajlar kurgusaldır.">Prototip</span>
+          <div style="position:relative">
+            <button class="ikon-btn" id="zilBtn" aria-label="Bildirimler"></button>
+            <div class="acilir" id="zilPanel"></div>
+          </div>
+          <a class="btn altin" href="#proje-olustur" id="yeniProjeBtn"></a>
+        </div>
+      </div>
+    </div>
+    <div id="view"></div>
+    <footer class="alt-bilgi">
+      <span>YEG Kardeş · Türkiye–Avrupa Yerel Eylem Grupları ağı · <b>Prototip</b>, resmî site değildir. YEG'ler, kişiler, projeler ve mesajlar kurgusaldır.</span>
+      <span>Yaptığınız değişiklikler yalnızca bu tarayıcıda tutulur · <a href="#" id="sifirla">Başa dön</a></span>
+    </footer>
+  </main>
+</div>
+
+<div class="palet" id="palet"><div class="ic"><input type="search" id="paletGir" placeholder="YEG, proje, ürün veya sayfa ara…" autocomplete="off"><div class="sonuc" id="paletSonuc"></div></div></div>
+<div class="toast-kap" id="toastKap"></div>
+<canvas id="konfeti"></canvas>
+
+
+<script src="js/data/harita2d.js"></script>
+<script src="js/data/veri.js"></script>
+<script src="js/platform/ikonlar.js"></script>
+<script src="js/platform/durum.js"></script>
+<script src="js/platform/ui.js"></script>
+<script src="js/platform/harita2d.js"></script>
+<script src="js/platform/akis.js"></script>
+<script src="js/platform/sayfalar/_cekirdek.js"></script>
+<script src="js/platform/sayfalar/genel.js"></script>
+<script src="js/platform/sayfalar/harita.js"></script>
+<script src="js/platform/sayfalar/yegler.js"></script>
+<script src="js/platform/sayfalar/profil.js"></script>
+<script src="js/platform/sayfalar/teklif.js"></script>
+<script src="js/platform/sayfalar/eslesme.js"></script>
+<script src="js/platform/sayfalar/projeler.js"></script>
+<script src="js/platform/sayfalar/proje-olustur.js"></script>
+<script src="js/platform/sayfalar/festival.js"></script>
+<script src="js/platform/sayfalar/mesajlar.js"></script>
+<script src="js/platform/sayfalar/fon.js"></script>
+<script src="js/platform/uc3.js"></script>
+<script src="js/platform/uygulama.js"></script>
+</body>
+</html>

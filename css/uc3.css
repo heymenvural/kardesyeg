@@ -1,0 +1,68 @@
+/* =====================================================================
+   3D görünümler, segment düğmeleri, kart eğme efekti
+===================================================================== */
+.kure-kap{position:relative;background:radial-gradient(110% 90% at 65% 30%,#1D3A63 0%,#14263F 50%,#0B1729 100%);overflow:hidden;border-radius:var(--r)}
+.kure-kap::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(60% 50% at 50% 50%,transparent 60%,rgba(8,16,30,.55) 100%)}
+.kure-kok{opacity:0;transition:opacity 1.2s var(--ease)}
+.kure-kok.hazir{opacity:1}
+.kure-kart{overflow:hidden;padding:0;border:0;background:#14263F}
+.kure-kart .kure-kap{height:100%;min-height:470px;border-radius:var(--r)}
+.kure-ust{position:absolute;left:18px;right:18px;top:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;z-index:3;pointer-events:none}
+.kure-ust>*{pointer-events:auto}
+.kure-alt{position:absolute;left:16px;right:16px;bottom:14px;display:flex;justify-content:space-between;align-items:flex-end;gap:10px;flex-wrap:wrap;z-index:3;pointer-events:none}
+.kure-alt>*{pointer-events:auto}
+.kure-lejant{display:flex;gap:12px;flex-wrap:wrap;font-size:11.5px;color:#C9D4E3;background:rgba(15,30,51,.7);border:1px solid #24395A;border-radius:10px;padding:7px 11px;backdrop-filter:blur(6px)}
+.kure-lejant b{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:0}
+.kure-lejant i{display:inline-block;width:14px;height:2px;margin-right:6px;vertical-align:3px;border-radius:2px}
+.cam-btn{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(6px)}
+.cam-btn:hover{background:rgba(255,255,255,.16)}
+
+.kure-etiketler{position:absolute;inset:0;pointer-events:none;z-index:2}
+.kure-etiket{position:absolute;left:0;top:0;white-space:nowrap;font:700 11.5px/1 "Plus Jakarta Sans",system-ui,sans-serif;color:#fff;background:rgba(15,30,51,.78);border:1px solid rgba(156,195,238,.35);padding:5px 8px;border-radius:8px;transition:opacity .25s;backdrop-filter:blur(4px)}
+.kure-etiket.ben{background:#E3B341;color:#14263F;border-color:#E3B341}
+.kure-etiket::after{content:"";position:absolute;left:50%;bottom:-5px;width:8px;height:8px;background:inherit;border-right:inherit;border-bottom:inherit;transform:translateX(-50%) rotate(45deg)}
+.kure-ipucu{position:absolute;z-index:4;pointer-events:none;background:#fff;color:#14263F;border-radius:12px;padding:10px 12px;box-shadow:0 12px 40px rgba(0,0,0,.35);font-size:12.5px;min-width:200px;max-width:260px;opacity:0;transform:translate(14px,-50%) scale(.96);transition:opacity .15s,transform .15s}
+.kure-ipucu.on{opacity:1;transform:translate(14px,-50%)}
+.kure-ipucu b{display:block;font-size:13.5px}
+.kure-ipucu span{display:block;color:#5F6B7A}
+.kure-ipucu .ur{margin-top:6px}
+.kure-ipucu small{display:block;color:#5F6B7A;margin-top:4px;font-size:11px}
+.webgl-yok{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#C9D4E3;text-align:center;padding:20px}
+.webgl-yok b{color:#fff}
+
+.segment{display:inline-flex;gap:2px;padding:3px;border-radius:12px;background:rgba(15,30,51,.72);border:1px solid #2A4468;backdrop-filter:blur(8px)}
+.segment button{border:0;background:transparent;color:#C1CDDD;font-weight:700;font-size:12.5px;padding:7px 11px;border-radius:9px;cursor:pointer;display:inline-flex;gap:6px;align-items:center;transition:all .2s;white-space:nowrap}
+.segment button:hover{color:#fff}
+.segment button.on{background:#E3B341;color:#14263F}
+.segment.acik{background:var(--beyaz);border-color:var(--cizgi)}
+.segment.acik button{color:var(--soluk)}
+.segment.acik button.on{background:var(--lacivert);color:#fff}
+
+/* Festival 3D */
+.salon-kart{padding:0;overflow:hidden}
+.salon-kap{position:relative;height:min(620px,72vh);min-height:420px;background:linear-gradient(180deg,#E9E2CF 0%,#F4F1E8 55%,#EDE6D3 100%)}
+.salon-ust{position:absolute;left:14px;right:14px;top:14px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;z-index:3;pointer-events:none}
+.salon-ust>*{pointer-events:auto}
+.salon-ust .cam{background:rgba(20,38,63,.86)}
+.salon-pop{position:absolute;right:14px;bottom:14px;width:320px;max-width:calc(100% - 28px);background:#fff;border:1px solid var(--cizgi);border-radius:16px;box-shadow:var(--g2);padding:14px;z-index:4;opacity:0;transform:translateY(12px);pointer-events:none;transition:all .3s var(--ease)}
+.salon-pop.on{opacity:1;transform:none;pointer-events:auto}
+.stant-liste{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media(max-width:640px){.stant-liste{grid-template-columns:1fr}}
+.stant-s{display:flex;align-items:center;gap:8px;border:1px solid var(--cizgi);background:#FDFCF8;border-radius:11px;padding:8px 10px;cursor:pointer;text-align:left;min-width:0;transition:border-color .2s,transform .15s}
+.stant-s:hover{border-color:var(--altin);transform:translateY(-1px)}
+.stant-s.dolu{background:#FFFBEF;border-color:#EBD9A0}
+.stant-s .no{font-size:11px;font-weight:800;color:var(--soluk);flex:none}
+.stant-s .ad{font-size:12.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* Kart eğme efekti */
+.yk,.pk,.kpi,.esles-kart,.fon{transform-style:preserve-3d;will-change:transform;position:relative}
+.yk::after,.pk::after,.esles-kart::after,.fon::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(420px circle at var(--gx,50%) var(--gy,0%),rgba(255,255,255,.55),transparent 45%);opacity:0;transition:opacity .3s;mix-blend-mode:soft-light}
+.yk:hover::after,.pk:hover::after,.esles-kart:hover::after,.fon:hover::after{opacity:1}
+
+.tanitim-link{display:flex;align-items:center;gap:8px;margin:8px 0 0;padding:9px 12px;border-radius:11px;color:#8FA3BF;font-size:13px;font-weight:600;border:1px dashed #2A4468;transition:all .2s}
+.tanitim-link:hover{color:#fff;border-color:#3F5F8A}
+
+@media(max-width:1100px){.kure-kart .kure-kap{min-height:400px}}
+@media(max-width:640px){.kure-lejant{display:none}.kure-kart .kure-kap{min-height:380px}.salon-kap{height:440px}}
+@media (prefers-reduced-motion: reduce){.yk,.pk,.kpi,.esles-kart,.fon{transform:none!important}}
+.kure-ust .btn{flex:none}
